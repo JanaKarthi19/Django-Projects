@@ -1,0 +1,91 @@
+{% extends 'blog\base.html' %}
+
+    {% block content %}
+
+    <section class="post" id="Home">
+        <div class="container py-3">
+            <div class="card newbg text-white">
+                <div class="card-body">
+                    <h1 class="card-title pb-2">Hello Word, Welcome Blog</h1>
+                    <h5 class="card-text text-warning">A beginner-friendly blog template designed to help you learn and share your thoughts online.</h5>
+                </div>
+            </div>
+            <div class="row bg-blue-200 mt-2 mb-3">
+                <h2 class="text-dark fw-bold" >Latest Posts</h2>
+                {% if posts %}
+                    {% for post in posts %}
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 my-2 box">
+                            <div class="card">
+                                <div class="row">
+                                    <div class="col-6 col-sm-12">
+                                        <img style="height:300, width:300" class="{{ post.image_url }}" src="https://picsum.photos/id/1/300/200" alt="">
+                                    </div>
+                                    <div class="col-6 col-sm-12">
+                                        <div class="card-body">
+                                            <h2 class="card-title mb-2"> {{post.title}} </h2>
+                                            <p class="card-text"> {{post.content}} </p>
+                                            <div class="d-flex justify-content-between">
+                                                <a class="link_color" href="{% url 'blog:detail' post_id=post.id %}">Read More..</a>
+                                                <a class="text-dark fw-bold" href="#"> {{post.category}} </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor%}
+                {% else %}
+                    <center><h3 class="fw-b">No Posts available</h3></center>
+                {% endif %}
+                
+            </div>
+    
+        </div>
+    </section>
+    <section class="about_us my-3" id="About">
+        <div class="container ">
+            <div class="row">
+                <div class="col-12 p-2 card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h1><b>Welcome to SimpleBlog</b></h1>
+                            <h2 class="card-subtitle">A space where ideas, stories, and knowledge come together</h2>
+                        </div>
+                        <div class="card-text">
+                            <h4>Our platform is built with a clean and responsive HTML, CSS, and Bootstrap frontend, ensuring that every post looks great on any device. Behind the scenes, we use the power of Python Django to manage content efficiently, while SQLite keeps our data organized, secure, and lightning-fast.</h4>
+                            <h4>You're here to read insightful articles, share your thoughts, or explore new perspectives, we've designed this blog to be simple, intuitive, and enjoyable. Every feature is crafted with clarity and accessibility in mind, so you can focus on what matters most — the content.</h4> 
+                            <h4>At SimpleBlog, we believe that great ideas deserve a great platform. That's why we combine modern web design with reliable backend technology to give you a smooth, distraction-free reading experience.</h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="form" id="form">
+        <div class="container">
+            <div class="row ms-1  ">
+                <div class="col-12 col-lg-6 bg-warning p-3">
+                    <h3>Contact Form</h3>
+                    <form action="">
+                        <div class="form-group m-3"> 
+                            <label for=""><b>Email Address : </b></label>
+                            <input type="email" name="" class="form-control">
+                        </div>
+                        <div class="form-group m-3">
+                            <label for=""><b>Name : </b></label>
+                            <input type="text" name="" class="form-control">
+                        </div>
+                        <div class="form-group m-3">
+                            <label for=""><b>Comments : </b></label>
+                            <textarea name="" class="form-control" cols="10"></textarea>
+                        </div>
+                        <button class="btn btn-danger m-3">Submit</button>
+                        <button class="btn btn-danger m-3">Cancel</button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% endblock %}
