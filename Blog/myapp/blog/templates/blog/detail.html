@@ -28,7 +28,7 @@
                         
                                 <div class="col">
                                 <div class="card-body">
-                                    <img src="https://via.placeholder.com/800x400" class="img-fluid mb-4" alt="Blog Image">
+                                    <img src={{ post.image_url }} class="img-fluid mb-4" alt="Blog Image">
                                     <p> {{ post.content }} </p>
                                 </div>
                                 </div>                        
@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="card-body">
                                         <ul>
-                                            <li><a class="text-decoration-none" href=""><b>Post 1</b></a></li>
+                                            <li><a class="text-decoration-none" href={% url "blog:index" %}><b>Post 1</b></a></li>
                                             <li><a class="text-decoration-none" href=""><b>Post 2</b></a></li>
                                             <li><a class="text-decoration-none" href=""><b>Post 3</b></a></li>
                                         </ul>

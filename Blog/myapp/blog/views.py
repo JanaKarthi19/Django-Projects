@@ -14,6 +14,8 @@ import logging
 #         {'id':6, 'title': 'Post 6', 'content': 'Content of Post 6', 'category': 'Education'},
 #     ]
 
+
+
 # Create your views here.
 def index(request):
     blog_title = "Blog Post"
@@ -22,10 +24,11 @@ def index(request):
     return render(request, 'blog/index.html', {'blog_title':blog_title, "blog_head":blog_head, 'posts' : posts})
 
 def detail(request, post_id):
-    Post = next((item for item in posts if item['id'] == int(post_id)), None)
-    logger = logging.getLogger("Testing")
-    logger.debug(f'post variable is {Post}')
-    return render(request, 'blog/detail.html', {'post':Post})
+    # Post = next((item for item in posts if item['id'] == int(post_id)), None)
+    # logger = logging.getLogger("Testing")
+    # logger.debug(f'post variable is {Post}')
+    post = Post.objects.get(pk=post_id)
+    return render(request, 'blog/detail.html', {'post':post})
 
 def old_url_redirect(request):
     return redirect(reverse('blog:new_url_page'))
