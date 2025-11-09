@@ -6,6 +6,7 @@ class Post(models.Model):
     content = models.TextField()
     image_url = models.URLField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    category = models.CharField(max_length=100, default="uncategorized")
 
     def __str__(self):
         return self.title

@@ -20,14 +20,14 @@ class Command(BaseCommand):
         ]
 
         contents = [
-            "Discover the hottest blog topics that are driving massive engagement and clicks this year.",
-            "Stay ahead of the curve with these must-know blogging trends shaping the digital landscape.",
-            "Fresh, creative blog post ideas to captivate your audience and keep your content calendar full.",
-            "Learn how AI tools can streamline your workflow and supercharge your everyday efficiency.",
-            "Craft a standout personal brand that thrives in a world dominated by artificial intelligence.",
-            "A bold look into the future of social platforms, from immersive tech to AI-driven interactions.",
-            "A personal journey of freedom, creativity, and capturing the globe from breathtaking new heights.",
-            "A head-to-head comparison of the top AI assistants—features, performance, and who comes out on top.",
+            "Whether you're a seasoned blogger or just starting out, choosing the right topics can make all the difference.Discover the hottest blog topics that are driving massive engagement and clicks this year.",
+            "Blogging in 2025 is evolving rapidly, driven by AI, shifting user behavior, and new content platforms.Stay ahead of the curve with these must-know blogging trends shaping the digital landscape.",
+            "Fresh, creative blog post ideas to captivate your audience and keep your content calendar full. Blogging in 2025 is evolving rapidly, driven by AI, shifting user behavior, and new content platforms.",
+            "Learn how AI tools can streamline your workflow and supercharge your everyday efficiency. Blogging in 2025 is evolving rapidly, driven by AI, shifting user behavior, and new content platforms.",
+            "Craft a standout personal brand that thrives in a world dominated by artificial intelligence. Blogging in 2025 is evolving rapidly, driven by AI, shifting user behavior, and new content platforms.",
+            "A bold look into the future of social platforms, from immersive tech to AI-driven interactions. Whether you're a seasoned blogger or just starting out, choosing the right topics can make all the difference.",
+            "A personal journey of freedom, creativity, and capturing the globe from breathtaking new heights. Whether you're a seasoned blogger or just starting out, choosing the right topics can make all the difference.",
+            "A head-to-head comparison of the top AI assistants—features, performance, and who comes out on top. Whether you're a seasoned blogger or just starting out, choosing the right topics can make all the difference.",
         ]
 
         image_urls = [
@@ -41,7 +41,18 @@ class Command(BaseCommand):
             "https://picsum.photos/id/40/800/400",
         ]
 
-        for title, content, image_url in zip(titles, contents, image_urls):
-            Post.objects.create(title=title, content=content, image_url=image_url)
+        category = [
+            'technology',
+            'technology',
+            'technology',
+            'technology',
+            'technology',
+            'technology',
+            'technology',
+            'technology',
+        ]
+
+        for title, content, image_url, category in zip(titles, contents, image_urls, category):
+            Post.objects.create(title=title, content=content, image_url=image_url, category=category)
 
         self.stdout.write(self.style.SUCCESS("Inserting Data Successfully Completed"))
