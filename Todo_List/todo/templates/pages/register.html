@@ -1,0 +1,44 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+    <div id="register_container">
+        <div id="register_first">
+            <h1>Register</h1>
+        </div>
+        <div id="register_second">
+            <form action="addinguser" method="POST">
+                {% csrf_token %}
+                <label for="">Username:</label><br>
+                <input type="text" name="reg_name" id="" required>
+                <br>
+                <br>
+                <label for="">Password:</label><br>
+                <input type="password" name="reg_pass" id="log_pass" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!%&*]).{8,16}$" title="Password must be 8 to 16 characters long" required>
+                <input type="checkbox" name="" id="show_pass">Show Password
+                <br>
+                <br>
+                <label for="">Password Confirmation:</label><br>
+                <input type="password" name="reg_conf" id="re_log_pass" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!%&*]).{8,16}$" title="Password and Confirmation Password should be same" required>
+                <input type="checkbox" name="" id="re_show_pass">Show Password
+                <br>
+                <br>
+                <input type="submit" value="Register">
+            </form>
+            <br>
+            <p>Already have a account? <a href="login">Login</a></p>
+        </div>
+    </div>
+    <h1>{{ error }}</h1>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="{% static "JS/script.js" %}"></script>
+
+{% endblock %}

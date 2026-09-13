@@ -1,0 +1,42 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block content %}
+    <div id="container">
+        <div id="first_box">
+            <a href="{% url 'logout' %}"><span>Logout</span></a>
+            <h1>Hello {{ name }}</h1>
+            <h3>You have {{ empty }} incomplete tasks</h3>
+        </div>
+        <div id="second_box">
+            <form action="{% url 'Add_todo' id %}">
+                <input type="search" name="query" id="">
+                <input type="submit" value="Search">
+                <input type="submit" value="+">
+                <ul type="none">
+                    {% for todo in todos %}
+                        <div id="task_box">
+                            <li>
+                                <span id="task_title">Title: {{ todo.title }}</span>
+                                <span id="task_status">Status: {% if todo.Completed %}✔️Done{% else %}⏳Pending{% endif %}</span>
+                                <a href="{% url 'edit_todo' todo.id id %}" class="btn edit-btn">Edit</a>
+                                <a href="{% url 'delete_todo' todo.id id %}" class="btn delete-btn">Delete</a>
+                            </li>
+                        </div>
+                    {% empty %}
+                        <li><h4 id="No_Task">No Task yet!</h4></li>
+                    {% endfor %}
+                </ul>
+
+            </form>
+        </div>
+        <h1>
+            {{ error }}
+        </h1>
+    </div>
+    
+{% endblock %}

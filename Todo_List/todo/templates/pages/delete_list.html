@@ -1,0 +1,40 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %}Delete{% endblock %}
+
+{% block content %}
+
+    <div id="add_container">
+        <div id="add_first_box">
+            <a href="{% url 'Home_page' user.id %}"><h3>Back</h3></a>
+        </div>
+        <div id="add_second_box">
+            <form action="{% url 'deleted_todo' todo.id user.id %}" method="POST">
+                {% csrf_token %}
+                <br>
+                <label><h4>Title:</h4></label>
+                <input type="text" name="delete_li_title" value="{{ todo.title }}">
+                <br>
+                <br>
+                <label for=""><h4>Description:</h4></label>
+                <textarea id="" name="delete_li_desc" style="width:400px; height:150px;">{{ todo.description }}</textarea>
+                <br>
+                <br>
+                <label for=""><h4>Completed:</h4></label>
+                <input type="text" name="delete_li_status" value={% if todo.Completed %}Completed{% else %}Pending{% endif %}>
+                <br>
+                <br>
+                <center><h4>Do you really want to delete this?</h4></center>
+                <br>
+                <center><input type="submit" value="Delete"></center>
+                <br>
+            </form>
+        </div>
+        <h2>{{ error }}</h2>
+        <br>
+        <br>
+    </div>
+
+{% endblock %}
