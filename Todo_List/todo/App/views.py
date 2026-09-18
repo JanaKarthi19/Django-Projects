@@ -22,11 +22,6 @@ def HomePageResponse(request, id):
     
             todos = user.todos.all()
 
-            search_query = request.GET.get('query')
-
-            if search_query:
-                todos =  todos.filter(title__icontains=search_query)
-
             todo_count= user.todos.filter(Completed=False).count()
 
             return render(request, 'pages/home.html', context={'name': user.User_name, 'id':user.id, 'empty': todo_count, 'todos': todos})
@@ -70,6 +65,35 @@ def UserLoginResponse(request):
     except User.DoesNotExist:
         error='UserName and Password did not match'
         return render(request, 'pages/index.html', context={'error':error})
+
+
+def SearchTodo(request, id):
+    try:
+        user = User.objects.get(id=id)
+
+        todos = user.todos.all()
+
+        search_query = request.GET.get('query')
+        if search_query:
+            todos = todos.filter(title__icontains=search_query)
+
+        # Always count incomplete tasks from the full list
+        todo_count = user.todos.filter(Completed=False).count()
+
+        return render(
+            request,
+            'pages/home.html',
+            {
+                'name': user.User_name,
+                'id': user.id,
+                'empty': todo_count,
+                'todos': todos,
+                'search_query': search_query
+            }
+        )
+    except User.DoesNotExist:
+        error = "User Not Found"
+        return render(request, 'pages/add_list.html', {'error': error})
 
 
 def AddingList(request, id):

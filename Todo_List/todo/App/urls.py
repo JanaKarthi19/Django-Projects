@@ -13,6 +13,7 @@ urlpatterns = [
     path('home/id/<int:id>', views.HomePageResponse, name='Home_page'),
     path('add/id/<int:id>', views.AddListResponse, name='Add_todo'),
     path('update/id/<int:id>', views.AddingList, name='Update_todo'),
+    path('search/id/<int:id>', views.SearchTodo, name='query_todo'),
 
 
     path('edit/id/<int:id>/user_id/<int:user_id>', views.EdtPageResponse, name='edit_todo'),

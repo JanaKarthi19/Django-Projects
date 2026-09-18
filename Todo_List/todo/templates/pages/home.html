@@ -13,10 +13,13 @@
             <h3>You have {{ empty }} incomplete tasks</h3>
         </div>
         <div id="second_box">
-            <form action="{% url 'Add_todo' id %}">
+            <form action="{% url 'query_todo' id %}" id="Search_form">
                 <input type="search" name="query" id="">
                 <input type="submit" value="Search">
-                <input type="submit" value="+">
+            </form>
+            <form action="{% url 'Add_todo' id %}">
+            <br>
+                <input type="submit" value="Add">
                 <ul type="none">
                     {% for todo in todos %}
                         <div id="task_box">
